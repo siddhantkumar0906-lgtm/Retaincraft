@@ -315,11 +315,32 @@ h1, h2, h3, .heading {
 
 .section-label {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
   margin-bottom: 64px;
+  color: var(--black);
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--orange);
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.services .section-label,
+.work .section-label,
+.pricing .section-label {
+  background: transparent;
+  border-color: var(--orange);
   color: var(--orange);
+}
+
+.testimonials .section-label,
+.why-us .section-label {
+  background: var(--black);
+  color: var(--orange);
+  border-color: var(--black);
 }
 
 .service-item {
@@ -511,31 +532,46 @@ h1, h2, h3, .heading {
 }
 
 .testimonials-heading {
-  font-size: clamp(36px, 6vw, 80px);
+  font-size: clamp(48px, 8vw, 120px);
   margin-bottom: 80px;
+  position: relative;
+}
+
+.testimonials-heading::before {
+  content: '\201C';
+  font-size: clamp(80px, 14vw, 200px);
+  position: absolute;
+  top: -0.5em;
+  left: -0.05em;
+  opacity: 0.12;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .testimonial-item {
   padding: 48px 0;
   border-top: var(--border);
+  position: relative;
 }
 
 .testimonial-item:last-child { border-bottom: var(--border); }
 
 .testimonial-quote {
   font-family: 'Archivo Black', sans-serif;
-  font-size: clamp(20px, 3vw, 36px);
+  font-size: clamp(22px, 3.5vw, 42px);
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.04em;
   margin-bottom: 24px;
 }
 
 .testimonial-author {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: uppercase;
   opacity: 0.7;
+  padding-left: 24px;
+  border-left: 3px solid var(--black);
 }
 
 /* ── PRICING ── */
@@ -648,6 +684,21 @@ h1, h2, h3, .heading {
   background: var(--orange);
 }
 
+.why-us-heading {
+  font-size: clamp(40px, 7vw, 100px);
+  margin-bottom: 0;
+  position: relative;
+}
+
+.why-us-heading::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 6px;
+  background: var(--black);
+  margin-top: 24px;
+}
+
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -669,15 +720,15 @@ h1, h2, h3, .heading {
 
 .why-card h3 {
   font-family: 'Archivo Black', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   letter-spacing: -0.04em;
-  line-height: 0.9;
+  line-height: 0.95;
 }
 
 .why-card p {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   opacity: 0.8;
 }
@@ -817,6 +868,230 @@ h1, h2, h3, .heading {
   transform: translateY(0);
 }
 
+/* ── PAGE HERO (Inner Pages) ── */
+.page-hero {
+  padding: 180px 40px 80px;
+  background: var(--orange);
+  position: relative;
+}
+
+.page-hero-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--black);
+  color: var(--orange);
+  border-radius: 999px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.page-hero-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(48px, 10vw, 140px);
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--black);
+}
+
+.page-hero-desc {
+  font-size: clamp(15px, 1.5vw, 18px);
+  max-width: 600px;
+  margin-top: 24px;
+  line-height: 1.6;
+}
+
+.page-hero-border {
+  width: 100%;
+  border-top: var(--border);
+  margin-top: 48px;
+}
+
+/* ── NAV ACTIVE ── */
+.nav-pill a.active {
+  background: var(--orange);
+  color: var(--black);
+  font-weight: 700;
+}
+
+/* ── PAGE TRANSITION ── */
+body {
+  animation: pageIn 0.5s ease-out;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SERVICES PREVIEW (Homepage) ── */
+.services-preview {
+  background: var(--black);
+  color: var(--white);
+  padding: 120px 40px;
+}
+
+.services-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-top: 64px;
+}
+
+.services-preview-card {
+  padding: 48px 32px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services-preview-card:last-child { border-right: none; }
+.services-preview-card:hover { background: rgba(255,255,255,0.05); }
+
+.services-preview-card .sp-index {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--orange);
+}
+
+.services-preview-card h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(24px, 3vw, 40px);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.services-preview-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+.services-preview-card .sp-arrow {
+  font-size: 32px;
+  color: var(--orange);
+  margin-top: auto;
+  transition: transform 0.3s ease;
+}
+
+.services-preview-card:hover .sp-arrow { transform: translateX(8px); }
+
+/* ── VIEW ALL LINK ── */
+.view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 1px solid var(--orange);
+  padding-bottom: 4px;
+  margin-top: 48px;
+  transition: gap 0.3s ease;
+}
+
+.view-all:hover { gap: 16px; }
+
+/* ── TESTIMONIAL HIGHLIGHT (Homepage) ── */
+.testimonial-highlight {
+  padding: 120px 40px;
+  background: var(--orange);
+  border-top: var(--border);
+  text-align: center;
+}
+
+.testimonial-highlight .th-quote {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(24px, 4vw, 56px);
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  max-width: 900px;
+  margin: 0 auto 32px;
+  position: relative;
+}
+
+.testimonial-highlight .th-quote::before {
+  content: '\201C';
+  font-size: clamp(60px, 10vw, 140px);
+  position: absolute;
+  top: -0.6em;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.testimonial-highlight .th-author {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ── FAQ ── */
+.faq { padding: 120px 40px; background: var(--orange); }
+
+.faq-heading {
+  font-size: clamp(36px, 6vw, 80px);
+  margin-bottom: 64px;
+}
+
+.faq-item {
+  border-top: var(--border);
+  padding: 32px 0;
+  cursor: pointer;
+}
+
+.faq-item:last-child { border-bottom: var(--border); }
+
+.faq-question {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question span {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-question span { transform: rotate(45deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 200px;
+  padding-top: 16px;
+}
+
+.faq-answer p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 700px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .pricing-grid { grid-template-columns: 1fr; }
@@ -828,6 +1103,9 @@ h1, h2, h3, .heading {
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .why-card:nth-child(2n) { border-right: none; }
   .why-card:nth-child(3n) { border-right: var(--border); }
+  .services-preview-grid { grid-template-columns: 1fr; }
+  .services-preview-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  .services-preview-card:last-child { border-bottom: none; }
 }
 
 @media (max-width: 768px) {
@@ -855,4 +1133,6 @@ h1, h2, h3, .heading {
   .footer { flex-direction: column; text-align: center; }
   .cta-sub { flex-direction: column; gap: 16px; }
   .scroll-indicator { width: 100px; height: 100px; }
+  .page-hero { padding: 140px 24px 60px; }
+  .services-preview, .testimonial-highlight, .faq { padding: 80px 24px; }
 }
